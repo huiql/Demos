@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#import <UIKit/UIKit.h>
 
 
 @implementation AlgorithmObject
@@ -220,21 +221,20 @@ typedef struct {
 //    ceilf(middle) // 向下取整
 }
 
-
-- (void)jjjjjjjj:(NSArray *)array target:(NSInteger)target {
-    NSInteger left = [array[0] integerValue] ;
-    NSInteger right = [array.lastObject integerValue];
-    NSInteger middleValue = (left + (right - left)/2.0);
-    float acurrVlaue  = 0.001;
-    while (right - left > acurrVlaue) {
-        
-        if (middleValue * middleValue < target) {
+// 手写二分法
++ (float)cacuValueTestNumber:(NSUInteger)number {
+    float acuValue = 0.0001;
+    NSInteger left = 0;
+    CGFloat right = number;
+    CGFloat middleValue;
+    while (right - left > acuValue) {
+        middleValue = left + (right - left)/2.0;
+        if (middleValue * middleValue < number) {
             left = middleValue;
         } else {
             right = middleValue;
         }
     }
-    
 }
 
 
@@ -274,6 +274,29 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     return maxLength;
 }
 */
+
+// 手动实现动态规划
++ (CGFloat)lookforCommonStr:(NSString *)str1 str:(NSString *)str2 {
+    NSMutableArray *array1 = [NSMutableArray array];
+    NSMutableArray *array2 = [NSMutableArray array];
+    NSInteger maxLength;
+    
+    // 声明二维数组
+    int cArray[0][0] = {};
+
+    for (int i = 0; i<array1.count; i++) {
+        for (int j = 0; j<array2.count; j++) {
+            if (array1[i]  == array2[i]) {
+                cArray[i][j] = cArray[i-1][j- 1] + 1;
+                if (cArray[i][j] > maxLength) {}
+                maxLength = cArray[i][j];
+            } else {
+                cArray[i][j] = 0;
+            }
+        }
+    }
+}
+
 
 //- (void)dddd {
 //    for (int i = 1; i<m; i++) {
