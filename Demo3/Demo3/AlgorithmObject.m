@@ -378,6 +378,38 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     }
 }
 
+// 手写双指针有序数组合并
+
++ (void)mergeArray:(NSArray *)array array2:(NSArray *)array2 {
+    // array 数组更长
+    NSUInteger i = array.count - 1;
+    NSUInteger j = array2.count - 1;
+    NSUInteger k = i + j - 1;
+    
+    NSMutableArray *finalArray = [NSMutableArray array];
+    while (i > 0 && j >0) {
+        if ([array[i] intValue] > [array2[j] intValue]) {
+            finalArray[k] = array[i];
+            i--;
+        } else {
+            finalArray[k] = array[j];
+            j--;
+        }
+    }
+    
+        while (i>0) {
+            finalArray[k] = array[i];
+            i--;
+            k--;
+        }
+        while (j>0) {
+            finalArray[k] = array[j];
+            j--;
+            k--;
+        }
+}
+
+
 //自己手写
 + (void)merge:(NSMutableArray *)nums1 array:(NSMutableArray *)nums2 {
     nums1 = [NSMutableArray arrayWithArray:nums1];
