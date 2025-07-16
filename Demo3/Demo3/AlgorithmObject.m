@@ -55,6 +55,19 @@
     return @[];
 }
 
++ (NSArray *)jjjjj:(NSArray *)array target:(NSInteger)target {
+    NSInteger matchValue = 0;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for (int i = 0; i<array.count; i++) {
+        matchValue = target - [array[i] integerValue];
+        if (![[dict allKeys] containsObject:@(matchValue)]) {
+            return @[@(i), dict[@(matchValue)]];
+        } else {
+            dict[@(matchValue)] = @(i);
+        }
+    }
+}
+
 // 手动实现
 + (NSArray *)nnnn:(NSArray *)array target:(NSInteger)target {
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
@@ -145,6 +158,21 @@ typedef struct {
         j++;
     }
     NSLog(@"排序后的数组是：%@ 【函数名%s】", nums, __func__);
+}
+
++ (void)kkkkkkjjj:(NSMutableArray *)array {
+    int i = 0; // 用于记录
+    int j = 0;  // 用于记录非零的位置
+    for (int i = 0; i<array.count; i++) {
+        if (![array[i]isEqualToNumber:@(0)]) {
+            array[j] = array[i];
+            j++
+        }
+    }
+    while (j < array.count) {
+        array[j] = @(0);
+        j++
+    }
 }
 
 + (void)moveZeroToLeft:(NSMutableArray *)nums {
