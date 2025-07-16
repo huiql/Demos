@@ -27,7 +27,7 @@
 //经典面试算法题： https://baijiahao.baidu.com/s?id=1818099810146187810&wfr=spider&for=pc
 
 
-#pragma mark ---- 数组中，两个值等于目标值 ---- 哈希表
+#pragma mark ---- 数组中，两个值等于目标值 ---- 哈希表 --  ✅✅✅✅✅✅
 //  -- 哈希表实现
 // 给定一个整数数组 nums 和一个目标值 target，请你在数组中找出两个数，使得它们的和等于目标值，返回它们的数组下标。
 /**
@@ -83,7 +83,7 @@
     return nil;
 }
 
-#pragma mark ---- 反转链表 ----
+#pragma mark ---- 反转链表 ---- ✅✅✅✅✅✅
 
 /// 翻转链表
 + (void)reverseListNode:(ListNode *)head {
@@ -131,7 +131,7 @@ typedef struct {
 
 */
 
-#pragma mark ---- 数组把0移动到最右侧，不改变非0顺序 ---- 双指针
+#pragma mark ---- 数组把0移动到最右侧，不改变非0顺序 ---- 双指针  ✅✅✅✅✅✅
 
 /*  --- 双指针实现
 实现数组，不新建数组，把0移到最右侧，不改变非0元素的顺序？（百度）
@@ -195,7 +195,7 @@ typedef struct {
 
 #pragma mark ---- 取x的平方根 ---- 二分法
 
-/// 计算并返回 x 的平方根，其中 x 是非负整数。（快手） ----- 二分法
+/// 计算并返回 x 的平方根，其中 x 是非负整数。（快手） ----- 二分法  ✅✅✅✅✅✅
 
 + (float)cacuValueNumber:(NSUInteger)number {
     
@@ -238,7 +238,7 @@ typedef struct {
 }
 
 
-#pragma mark ---- 查找两个字符串公共部分的长度  ----动态规划
+#pragma mark ---- 查找两个字符串公共部分的长度  ----动态规划  ✅✅✅✅✅✅
 // 算法题：查找两个字符串公共部分的长度 --  动态规划实现
 /*
  
@@ -312,7 +312,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 //        }
 //    }
 //}
-// 约瑟夫环问题  --- 方案：数组模拟法
+// 约瑟夫环问题  --- 方案：数组模拟法  ❌❌❌❌❌❌❌
 // 人报数，1 2 3  3号去除，然后接着4开始报  然后4 5  6,6  去除  然后7 8 9 ,9去除， 10  11  12  12 去除，最后算有几个人
 
 + (NSUInteger)remainingPeopleWithTotal:(NSUInteger)n {
@@ -335,7 +335,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     return people.count;
 }
 
-#pragma mark   ---- 合并有序数组 ---- 双指针
+#pragma mark   ---- 合并有序数组 ---- 双指针  ✅✅✅✅✅✅
 // 给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 nums1 成为一个有序数组。
 // 双指针法
 /*
@@ -445,7 +445,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 
 
 
-#pragma mark ---- 旋转数组 ----
+#pragma mark ---- 旋转数组 ----❌❌❌❌❌❌
 
 /**
  步骤解析
@@ -485,7 +485,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 
 /*
  
- 给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。
+ 给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。❌❌❌❌❌❌
 
  元音字母包括 'a'、'e'、'i'、'o'、'u'，且可能以大小写两种形式出现不止一次。
 
