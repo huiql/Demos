@@ -67,6 +67,7 @@
             dict[@(matchValue)] = @(i);
         }
     }
+    return nil;
 }
 
 // 手动实现
@@ -103,17 +104,18 @@ typedef struct {
 }myListNode;
 
 
-- (void)reverseList:(id)head {
-    id pre = nil;
-    id current = head;
-    while (current!= nil) {
-        temp = current.next;
-        current.next = pre;
-        pre = current;
-        current = temp;
-        
-    }
-}
+//- (void)reverseList:(myListNode)head {
+//    id pre = nil;
+//    myListNode current = head;
+//    myListNode temp;
+//    while (current.next!= nil) {
+//        temp = (myListNode)current.next;
+//        current.next = pre;
+//        pre = current;
+//        current = temp;
+//
+//    }
+//}
 
 
 /*
@@ -167,12 +169,12 @@ typedef struct {
     for (int i = 0; i<array.count; i++) {
         if (![array[i]isEqualToNumber:@(0)]) {
             array[j] = array[i];
-            j++
+            j++;
         }
     }
     while (j < array.count) {
         array[j] = @(0);
-        j++
+        j++;
     }
 }
 
@@ -222,7 +224,7 @@ typedef struct {
 }
 
 // 手写二分法
-+ (float)cacuValueTestNumber:(NSUInteger)number {
++ (CGFloat)cacuValueTestNumber:(NSUInteger)number {
     float acuValue = 0.0001;
     NSInteger left = 0;
     CGFloat right = number;
@@ -235,6 +237,7 @@ typedef struct {
             right = middleValue;
         }
     }
+    return middleValue;
 }
 
 
@@ -245,7 +248,7 @@ typedef struct {
  动态规划表是一个二维数组，其中dp[i][j]表示以str1的第i-1个字符和str2的第j-1个字符结尾的最长公共子串长度。当字符相等时，dp[i][j] = dp[i-1][j-1] + 1，否则为0。同时记录最大值。
  */
 
-
+/*
 int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     int m = strlen(str1);
     int n = strlen(str2);
@@ -276,7 +279,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 */
 
 // 手动实现动态规划
-+ (CGFloat)lookforCommonStr:(NSString *)str1 str:(NSString *)str2 {
++ (NSInteger)lookforCommonStr:(NSString *)str1 str:(NSString *)str2 {
     NSMutableArray *array1 = [NSMutableArray array];
     NSMutableArray *array2 = [NSMutableArray array];
     NSInteger maxLength;
@@ -295,6 +298,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
             }
         }
     }
+    return maxLength;
 }
 
 
@@ -336,10 +340,6 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 }
 
 // 手动写
-
-
-- 
-
 
 #pragma mark   ---- 合并有序数组 ---- 双指针  ✅✅✅✅✅✅
 // 给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 nums1 成为一个有序数组。
@@ -537,7 +537,35 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 
 #pragma mark 双指针求最近公共父视图
 
+- (UIView *)lookforFirstParent:(UIView *)view1 view2:(UIView *)view2 {
+    if (view1 == view2) {
+        return view1.superview;
+    }
+    
+    NSArray *view1Array = [self parentsView:view1];
+    NSArray *view2Array = [self parentsView:view2];
+    NSInteger count1 = view1Array.count;
+    NSInteger count2 = view2Array.count;
 
+    NSInteger miniCount = count1 > count2 ? count1 : count2;
+    UIView *commonParent = nil;
+    // 倒序取两个数组的视图
+    while (view1Array[count1 - 1] == view2Array[count2 -1]) {
+        commonParent = view1Array[count1 - 1];
+        count1--;
+        count2--;
+    }
+
+    return commonParent;
+}
+
+- (NSArray *)parentsView:(UIView *)view {
+    NSMutableArray *viewsArray = [NSMutableArray array];
+    while (view.superview) {
+        [viewsArray addObject:view.superview];
+    }
+    return viewsArray;
+}
 
 
 @end
