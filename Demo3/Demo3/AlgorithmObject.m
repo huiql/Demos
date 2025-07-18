@@ -312,7 +312,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 //        }
 //    }
 //}
-// 约瑟夫环问题  --- 方案：数组模拟法  ❌❌❌❌❌❌❌
+#pragma mark  ---- 约瑟夫环问题  --- 方案：数组模拟法  ❌❌❌❌❌❌❌
 // 人报数，1 2 3  3号去除，然后接着4开始报  然后4 5  6,6  去除  然后7 8 9 ,9去除， 10  11  12  12 去除，最后算有几个人
 
 + (NSUInteger)remainingPeopleWithTotal:(NSUInteger)n {
@@ -334,6 +334,12 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     
     return people.count;
 }
+
+// 手动写
+
+
+- 
+
 
 #pragma mark   ---- 合并有序数组 ---- 双指针  ✅✅✅✅✅✅
 // 给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 nums1 成为一个有序数组。
@@ -483,9 +489,10 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 }
 
 
+#pragma mark ----- 仅反转字符串中的所有元音字母，并返回结果字符串 ❌❌❌❌❌❌
 /*
  
- 给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。❌❌❌❌❌❌
+ 给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。
 
  元音字母包括 'a'、'e'、'i'、'o'、'u'，且可能以大小写两种形式出现不止一次。
 
@@ -527,6 +534,10 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     }
     return array;
 }
+
+#pragma mark 双指针求最近公共父视图
+
+
 
 
 @end
