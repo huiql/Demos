@@ -615,5 +615,70 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
 }
 
 
+#pragma mark 求连续最长序列
+/**
+  给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
+  请你设计并实现时间复杂度为 O(n) 的算法解决此问题。
+ 
+ 示例 1：
+
+ 输入：nums = [100,4,200,1,3,2]
+ 输出：4
+ 解释：最长数字连续序列是 [1, 2, 3, 4]。它的长度为 4。
+
+ 示例 2：
+
+ 输入：nums = [0,3,7,2,5,8,4,6,0,1]
+ 输出：9
+
+ 示例 3：
+
+ 输入：nums = [1,0,1,2]
+ 输出：3
+ 
+ *****/
+
+- (NSInteger)macLength:(NSArray *)numbers {
+    NSMutableArray *maxOrderArray = [NSMutableArray array];
+    NSSet *set = [NSSet setWithArray:numbers];
+    NSInteger maxLength = 0;
+    for (NSNumber *item in set) {
+        NSInteger currentValue = [item integerValue];
+        // 查找第一个连续的头部，检查是否是序列起点
+        if (![set containsObject:@(currentValue - 1)]) {
+            NSInteger currentLength = 1;
+            // 向后查找连续数字
+            while ([set containsObject:@(currentValue + currentLength)]) {
+                currentLength++;
+            }
+            // 更新最大长度
+            maxLength = MAX(currentLength, maxLength);
+        }
+    }
+    return maxLength;  // 这里返回计算出的最大长度
+}
+
+/* 代码解释：
+ ​使用 NSSet 去重​：
+ NSSet *numSet = [NSSet setWithArray:nums]; 将数组转换为集合，自动去除重复元素
+ 集合提供了 O(1) 时间复杂度的查找操作
+ ​查找序列起点​：
+ if (![numSet containsObject:@(currentNum - 1)]) 检查当前数字是否是序列起点
+ 只有当 currentNum - 1 不存在时，currentNum 才被视为序列起点
+ ​扩展序列​：
+ while ([numSet containsObject:@(currentNum + currentLength)]) 向后查找连续的数字
+ 每次找到连续数字时增加 currentLength
+ ​更新最大长度​：
+ maxLength = MAX(maxLength, currentLength); 记录并更新找到的最长序列长度
+ ​时间复杂度​：
+ 每个数字最多被访问两次（一次在集合中检查，一次在扩展序列时）
+ 整体时间复杂度为 O(n)
+ ​空间复杂度​：
+ 需要额外的 NSSet 存储所有数字
+ 空间复杂度为 O(n)
+ */
+
+
+
 
 @end
