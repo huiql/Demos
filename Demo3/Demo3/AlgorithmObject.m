@@ -535,7 +535,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     return array;
 }
 
-#pragma mark 双指针求最近公共父视图
+#pragma mark 双指针求最近公共父视图  ✅✅✅✅✅✅✅✅
 
 - (UIView *)lookforFirstParent:(UIView *)view1 view2:(UIView *)view2 {
     if (view1 == view2) {
@@ -566,6 +566,54 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     }
     return viewsArray;
 }
+
+
+#pragma mark  删除链表倒数第n个节点 ✅✅✅✅✅✅✅
+/**
+删除链表的倒数第n个节点
+给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
+
+
+方法思路
+​使用虚拟头节点（dummy node）​​：简化边界条件处理（如删除头节点的情况）。
+​快慢指针​：
+快指针 fast 先向前移动 n + 1 步，使得 fast 和 slow 之间相隔 n 个节点。
+然后同时移动 fast 和 slow，直到 fast 到达链表末尾。
+此时 slow 指向倒数第 n + 1 个节点，直接修改 slow->next 即可删除倒数第 n 个节点。
+
+**/
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+ struct ListNode {
+     int val;
+     struct ListNode *next;
+ };
+
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
+  struct ListNode dummy = {0, head};
+    struct ListNode *fast = &dummy;
+    struct ListNode *slow = &dummy;
+    for (int i = 0; i <= n;i++) {
+        fast = fast->next;
+    }
+
+    while (fast != NULL) {
+        fast = fast->next;
+        slow = slow->next;
+    }
+
+    struct ListNode *to_delete = slow->next;
+    slow->next = slow->next->next;
+
+   return dummy.next;
+}
+
 
 
 @end

@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)reverseStr:(NSString *)oriStr;
 
 
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
+
+
 @end
 
 NS_ASSUME_NONNULL_END
