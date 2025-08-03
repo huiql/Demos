@@ -496,6 +496,11 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 
  元音字母包括 'a'、'e'、'i'、'o'、'u'，且可能以大小写两种形式出现不止一次。
 
+ 详细思路：
+ 1、把字符串转换成数组
+ 2、遍历数组，找到元音字母，进行反转。翻转思路：从数组头尾开始，依次交换。从头尾开始，依次交换。如果是元音字母，就交换，如果不是，就跳过。并通过一个记录是否是元音字母。
+ 3、把数组转换成字符串
+ 4、返回字符串
 
  */
 
@@ -547,7 +552,6 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
     NSInteger count1 = view1Array.count;
     NSInteger count2 = view2Array.count;
 
-    NSInteger miniCount = count1 > count2 ? count1 : count2;
     UIView *commonParent = nil;
     // 倒序取两个数组的视图
     while (view1Array[count1 - 1] == view2Array[count2 -1]) {
