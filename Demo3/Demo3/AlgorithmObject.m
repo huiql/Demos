@@ -568,7 +568,7 @@ int cacuCommonMaxLemgth(const char *str1, const char *str2) {
 }
 
 
-#pragma mark  删除链表倒数第n个节点 ✅✅✅✅✅✅✅
+#pragma mark  删除链表倒数第n个节点 - 链表  ✅✅✅✅✅✅✅
 /**
 删除链表的倒数第n个节点
 给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
@@ -615,7 +615,7 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
 }
 
 
-#pragma mark 求连续最长序列
+#pragma mark 求连续最长序列 -----哈希  ✅ ✅ ✅ ✅ ✅ ✅ ✅
 /**
   给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
   请你设计并实现时间复杂度为 O(n) 的算法解决此问题。
@@ -638,24 +638,35 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
  
  *****/
 
-- (NSInteger)macLength:(NSArray *)numbers {
++ (void)cacuMaxLength:(NSArray *)numbers finish:(void(^)(NSInteger maxLength, NSArray *array))finishBlock {
     NSMutableArray *maxOrderArray = [NSMutableArray array];
+    
     NSSet *set = [NSSet setWithArray:numbers];
     NSInteger maxLength = 0;
     for (NSNumber *item in set) {
         NSInteger currentValue = [item integerValue];
+        NSMutableArray *tempArray = [NSMutableArray array];
         // 查找第一个连续的头部，检查是否是序列起点
         if (![set containsObject:@(currentValue - 1)]) {
+            
+            [tempArray addObject:@(currentValue)]; // 存储序列值
             NSInteger currentLength = 1;
             // 向后查找连续数字
             while ([set containsObject:@(currentValue + currentLength)]) {
+                [tempArray addObject:@(currentValue + currentLength)]; // 存储连续序列值
                 currentLength++;
+            }
+            if (currentLength > maxLength) {
+                maxLength = maxLength;
+                maxOrderArray = tempArray;
             }
             // 更新最大长度
             maxLength = MAX(currentLength, maxLength);
         }
     }
-    return maxLength;  // 这里返回计算出的最大长度
+    if (finishBlock) {
+        finishBlock(maxLength, maxOrderArray);
+    }
 }
 
 /* 代码解释：
@@ -679,6 +690,51 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
  */
 
 
+#pragma mark 二叉树，深度优先遍历-----递归调用
+/**
+给定一个二叉树 root ，返回其最大深度。
+二叉树的 最大深度 是指从根节点到最远叶子节点的最长路径上的节点数。
+***/
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+
+
+//- (void)solution {
+//    public int maxDepth(TreeNode root) {
+//        if (root == null) return 0;
+//        return Math.max(maxDepth(root.left),maxDepth(root.right)) +1;
+//    }
+//}
+
++ (void)bubbleOrder:(NSArray *)oriArray2 {
+    NSMutableArray *oriArray = [NSMutableArray arrayWithArray:oriArray2];
+    for (int i = 0; i<oriArray.count; i++) {
+        for (int j = 0; j< oriArray.count - i - 1; j++) {
+            if ([oriArray[j] integerValue] > [oriArray[j+1] integerValue]) {
+                id temp = oriArray[j];
+                oriArray[j] = oriArray[j+1];
+                oriArray[j+1] = temp;
+            }
+        }
+    }
+    NSLog(@"oriarray = %@", oriArray);
+}
 
 
 @end

@@ -35,6 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 
++ (void)cacuMaxLength:(NSArray *)numbers finish:(void(^)(NSInteger maxLength, NSArray *array))finishBlock;
+
++ (void)bubbleOrder:(NSArray *)oriArray2;
+
+
 
 @end
 
